@@ -1,0 +1,10 @@
+version: "2"
+services:
+  api:
+    image: skatepark-api-go
+    ports:
+      - "80:8080"
+  spa:
+    image: celebrityskateboards-spa-angular
+    ports:
+      - "80:4200"
