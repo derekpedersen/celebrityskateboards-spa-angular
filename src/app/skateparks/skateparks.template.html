@@ -1,0 +1,75 @@
+<div *ngIf="isLoading">
+    <mat-progress-spinner></mat-progress-spinner>
+</div>
+<div *ngIf="!isLoading"
+     fxLayout="row" fxLayout.xs="column">
+    <div fxLayout="column"
+         fxFlex="25">
+        <mat-card class="base-card">
+            <mat-card-content>
+                <mat-card-title>
+                    <span>Skateparks</span>
+                </mat-card-title>
+                <mat-accordion>
+                    <mat-expansion-panel *ngFor="let state of skateparkStates">
+                        <mat-expansion-panel-header>
+                            {{ state.state }}
+                        </mat-expansion-panel-header>
+                        <mat-list>
+                            <mat-list-item *ngFor="let city of state.cities">
+                                <button mat-menu-item *ngIf="city.skateparks.length > 1" [matMenuTriggerFor]="skateparkMenu">{{ city.city }}</button>
+                                <button mat-menu-item *ngIf="city.skateparks.length === 1" (click)="selectSkatepark(city.skateparks[0])">{{ city.city }}</button>
+                                <mat-menu #skateparkMenu="matMenu" [overlapTrigger]="true">
+                                    <mat-list>
+                                        <mat-list-item *ngFor="let skatepark of city.skateparks">
+                                            <button mat-menu-item (click)="selectSkatepark(skatepark)">{{ skatepark.name }}</button>
+                                        </mat-list-item>
+                                    </mat-list>
+                                </mat-menu>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxLayout="column"
+         fxFlex="75">
+        <div *ngIf="!isSelected">
+            <mat-card class="base-card">
+                <mat-card-title>
+                    Skateboarding
+                </mat-card-title>
+                <mat-card-content>
+                    <p>
+                        My glory days of skating were from 1997 till 2002 when I was between the ages of 12 and 17. I also dabbled in college when I built a 2.5 foot mini-ramp in my back yard which lasted through two summers when I was 22 and 23 in 2007 and 2008. Then while at the ripe old age fo 31 in the spring of 2017 I started skating regularly again, because well it beats the gym. 
+                    </p>
+                    <p>
+                        These are the skateparks I've been too and they are organized by state / province and then by city.
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div *ngIf="isSelected">
+            <div>
+                <mat-card class="base-card">
+                    <mat-card-title>
+                        {{ selectedSkatepark.name }}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        {{ selectedSkatepark.description }}
+                    </mat-card-subtitle>
+                    <mat-card-actions style="margin: 0 auto;">
+                        <div class="content-image" [innerHTML]="selectedSkatepark?.address?.googleMaps?.embedMap | safeHtml" style="margin: 0 auto;"></div>
+                    </mat-card-actions>
+                    <mat-card-content *ngFor="let image of selectedSkatepark?.album?.images">
+                        <mat-card-subtitle>
+                            <img src="{{ image.link }}" class="content-image" />
+                        </mat-card-subtitle>
+                        {{ image.description }}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
