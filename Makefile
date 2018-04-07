@@ -1,3 +1,8 @@
+local-run:
+	gcloud docker -- pull us.gcr.io/derekpedersen-195304/skatepark-api-go:latest
+	docker run -d --rm -it -p 4200:8080 --name=skatepark-api-go-container -t skatepark-api-go
+	ng serve
+
 .PHONY: build
 build:
 	docker build ./ -t celebrityskateboards-spa-angular

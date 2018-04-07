@@ -16,7 +16,7 @@ import { SkateparksService } from './skateparks.service';
 
 export class SkateparksComponent {
 
-    public isLoading: boolean = false;
+    public isLoading: boolean = true;
     public isSelected: boolean = false;
     public skateparks: Skatepark[];
     public skateparkStates: SkateparkState[];

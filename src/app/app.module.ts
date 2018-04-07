@@ -22,13 +22,12 @@ import { MatButtonModule, MatCardModule, MatIconModule, MatExpansionModule, MatM
     Safe
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
-    CommonModule,
-    FlexLayoutModule,
-    HttpClientModule,
     MatButtonModule, MatCardModule, MatIconModule, MatExpansionModule, MatMenuModule, MatToolbarModule, MatProgressSpinnerModule, MatListModule
   ],
   providers: [

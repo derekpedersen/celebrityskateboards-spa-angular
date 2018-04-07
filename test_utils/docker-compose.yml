@@ -1,0 +1,19 @@
+version: "3"
+services:
+  api:
+    # replace username/repo:tag with your name and image details
+    image: "skatepark-api-go"
+    # deploy:
+    #   replicas: 5
+    #   resources:
+    #     limits:
+    #       cpus: "0.1"
+    #       memory: 50M
+      restart_policy:
+        condition: always
+    ports:
+      - "4200:4200"
+    networks:
+      - apinet
+networks:
+  apinet:
