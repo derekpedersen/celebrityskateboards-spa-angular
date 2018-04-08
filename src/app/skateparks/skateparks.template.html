@@ -1,37 +1,34 @@
-<div *ngIf="isLoading">
-        <mat-spinner></mat-spinner>
-</div>
-<div *ngIf="!isLoading" fxFlexFill fxLayout="row">
-        <div fxFlex="35">
-                <mat-card>
-                        <mat-card-content>
-                                <mat-card-title>
-                                        <span>Skateparks</span>
-                                </mat-card-title>
-                                <mat-accordion>
-                                        <mat-expansion-panel *ngFor="let state of skateparkStates">
-                                                <mat-expansion-panel-header>
-                                                        {{ state.state }}
-                                                </mat-expansion-panel-header>
-                                                <mat-list>
-                                                        <mat-list-item *ngFor="let city of state.cities">
-                                                                <button mat-menu-item *ngIf="city.skateparks.length > 1" [matMenuTriggerFor]="skateparkMenu">{{ city.city }}</button>
-                                                                <button mat-menu-item *ngIf="city.skateparks.length === 1" (click)="selectSkatepark(city.skateparks[0])">{{ city.city }}</button>
-                                                                <mat-menu #skateparkMenu="matMenu" [overlapTrigger]="true">
-                                                                        <mat-list>
-                                                                                <mat-list-item *ngFor="let skatepark of city.skateparks">
-                                                                                        <button mat-menu-item (click)="selectSkatepark(skatepark)">{{ skatepark.name }}</button>
-                                                                                </mat-list-item>
-                                                                        </mat-list>
-                                                                </mat-menu>
-                                                        </mat-list-item>
-                                                </mat-list>
-                                        </mat-expansion-panel>
-                                </mat-accordion>
-                        </mat-card-content>
-                </mat-card>
-        </div>
-        <div fxFlex="65">
+<mat-toolbar color="primary">
+        <button mat-icon-button (click)="toggleMenu()">
+                <mat-icon>menu</mat-icon>
+        </button>
+        Celebrity Skateboards
+</mat-toolbar>
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<mat-sidenav-container *ngIf="!isLoading" fxFlexFill fxLayout="column">
+        <mat-sidenav #snav [opened]="showMenu">
+                <mat-accordion>
+                        <mat-expansion-panel *ngFor="let state of skateparkStates">
+                                <mat-expansion-panel-header>
+                                        {{ state.state }}
+                                </mat-expansion-panel-header>
+                                <mat-list>
+                                        <mat-list-item *ngFor="let city of state.cities">
+                                                <button mat-menu-item *ngIf="city.skateparks.length > 1" [matMenuTriggerFor]="skateparkMenu">{{ city.city }}</button>
+                                                <button mat-menu-item *ngIf="city.skateparks.length === 1" (click)="selectSkatepark(city.skateparks[0])">{{ city.city }}</button>
+                                                <mat-menu #skateparkMenu="matMenu" [overlapTrigger]="true">
+                                                        <mat-list>
+                                                                <mat-list-item *ngFor="let skatepark of city.skateparks">
+                                                                        <button mat-menu-item (click)="selectSkatepark(skatepark)">{{ skatepark.name }}</button>
+                                                                </mat-list-item>
+                                                        </mat-list>
+                                                </mat-menu>
+                                        </mat-list-item>
+                                </mat-list>
+                        </mat-expansion-panel>
+                </mat-accordion>
+        </mat-sidenav>
+        <mat-sidenav-content>
                 <div *ngIf="!isSelected">
                         <mat-card class="base-card">
                                 <mat-card-title>
@@ -78,5 +75,5 @@
                                 </mat-card-content>
                         </mat-card>
                 </div>
-        </div>
-</div>
+        </mat-sidenav-content>
+</mat-sidenav-container>

@@ -16,6 +16,7 @@ import { SkateparksService } from './skateparks.service';
 
 export class SkateparksComponent {
 
+    public showMenu: boolean = true;
     public isLoading: boolean = true;
     public isSelected: boolean = false;
     public skateparks: Skatepark[];
@@ -59,6 +60,10 @@ export class SkateparksComponent {
     public selectSkatepark(skatepark: Skatepark) {
         this.selectedSkatepark = skatepark;
         this.isSelected = true;
+    }
+
+    public toggleMenu() {
+        this.showMenu = !this.showMenu;
     }
 }
 
