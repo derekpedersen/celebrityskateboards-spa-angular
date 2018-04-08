@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app.routing';
 import { ApiService } from './api/api.service';
 import { SkateparksService } from './skateparks/skateparks.service';
 
-import { MatButtonModule, MatCardModule, MatIconModule, MatExpansionModule, MatMenuModule, MatToolbarModule, MatProgressSpinnerModule, MatListModule, MatGridListModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIconModule, MatExpansionModule, MatMenuModule, MatToolbarModule, MatProgressSpinnerModule, MatListModule, MatGridListModule, MatSidenavModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { MatButtonModule, MatCardModule, MatIconModule, MatExpansionModule, MatM
     HttpClientModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
-    MatButtonModule, MatCardModule, MatIconModule, MatExpansionModule, MatMenuModule, MatToolbarModule, MatProgressSpinnerModule, MatListModule
+    MatButtonModule, MatCardModule, MatIconModule, MatExpansionModule, MatMenuModule, MatToolbarModule, MatProgressSpinnerModule, MatListModule, MatSidenavModule
   ],
   providers: [
     ApiService,

@@ -13,6 +13,9 @@ WORKDIR /celebrityskateboards.com-spa
 # Install packages
 RUN npm install
 
+# Rebuld sass
+RUN npm rebuild node-sass
+
 # Build app
 RUN ng build
 

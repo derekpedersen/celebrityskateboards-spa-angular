@@ -1,7 +1,11 @@
+local-test:
+	docker build ./ -t celebrityskateboards-spa-angular
+	gcloud docker -- pull us.gcr.io/derekpedersen-195304/skatepark-api-go:latest
+	cd test_utils/ && docker-compose up -d
+
 local-run:
 	gcloud docker -- pull us.gcr.io/derekpedersen-195304/skatepark-api-go:latest
-	docker run -d --rm -it -p 4200:8080 --name=skatepark-api-go-container -t skatepark-api-go
-	ng serve
+	cd /test_utils && docker-compose up -d
 
 .PHONY: build
 build:
