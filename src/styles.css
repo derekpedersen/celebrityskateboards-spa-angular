@@ -1,9 +1,13 @@
 html {
-    min-height: 100% !important;
+    height: 100% !important;
 }
 
 body {
-    height: 80% !important;
+    position: fixed;
+    top: 0;
+    bottom: 70px;
+    right: 0;
+    left: 0;
 }
 
 .content-image {

@@ -37,10 +37,9 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 }
 
 // Material Overrides
-.mat-spinner {
+.mat-progress-bar {
     margin: 0 auto !important;
-    min-height: 80% !important;
-    min-width: 80% !important;
+    padding-top: 10% !important;
 }
 
 // Loading 
