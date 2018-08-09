@@ -1,9 +1,17 @@
-local-test:
+local-build:
+	npm install
+	npm rebuild node-sass
+	ng build
+
+local-run: local-build
+	ng serve --host 0.0.0.0 --disable-host-check
+
+docker-test:
 	docker build ./ -t celebrityskateboards-spa-angular
 	gcloud docker -- pull ${GCR}/skatepark-api-go:latest
 	cd test_utils/ && docker-compose up -d
 
-local-run:
+docker-run:
 	gcloud docker -- pull ${GCR}/skatepark-api-go:latest
 	cd /test_utils && docker-compose up -d
 
