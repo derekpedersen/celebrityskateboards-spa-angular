@@ -16,6 +16,7 @@ import { SkateparksService } from './skateparks.service';
 })
 
 export class SkateparksComponent {
+
     @ViewChild('snav') snav: MatSidenav;
 
     public isLoading: boolean = true;

@@ -8,11 +8,11 @@ local-run: local-build
 
 docker-test:
 	docker build ./ -t celebrityskateboards-spa-angular
-	gcloud docker -- pull ${GCR}/skatepark-api-go:latest
+	gcloud docker -- pull ${PROJECT_ID}/skatepark-api-go:latest
 	cd test_utils/ && docker-compose up -d
 
 docker-run:
-	gcloud docker -- pull ${GCR}/skatepark-api-go:latest
+	gcloud docker -- pull ${PROJECT_ID}/skatepark-api-go:latest
 	cd /test_utils && docker-compose up -d
 
 .PHONY: build
@@ -20,8 +20,8 @@ build:
 	docker build ./ -t celebrityskateboards-spa-angular
 
 publish:
-	docker tag celebrityskateboards-spa-angular ${GCR}/celebrityskateboards-spa-angular:latest
-	gcloud docker -- push ${GCR}/celebrityskateboards-spa-angular:latest
+	docker tag celebrityskateboards-spa-angular ${PROJECT_ID}/celebrityskateboards-spa-angular:latest
+	gcloud docker -- push ${PROJECT_ID}/celebrityskateboards-spa-angular:latest
 
 deploy:
 	kubectl delete deployment celebrityskateboards-spa-angular-deployment
