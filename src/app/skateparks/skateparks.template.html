@@ -1,12 +1,12 @@
 <mat-toolbar color="primary">
-        <button mat-icon-button (click)="toggleMenu()">
+        <button mat-icon-button (click)="snav.open()">
                 <mat-icon>menu</mat-icon>
         </button>
         Celebrity Skateboards
 </mat-toolbar>
 <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
-<mat-sidenav-container *ngIf="!isLoading" fxFlexFill fxLayout="column">
-        <mat-sidenav #snav [opened]="showMenu">
+<mat-sidenav-container *ngIf="!isLoading" fxFlexFill fxLayout="column" (backdropClick)="snav.close()">
+        <mat-sidenav #snav>
                 <mat-accordion>
                         <mat-expansion-panel *ngFor="let state of skateparkStates">
                                 <mat-expansion-panel-header>

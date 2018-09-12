@@ -1,6 +1,7 @@
-import { Component, Input, Pipe } from '@angular/core';
+import { Component, ViewChild, Pipe } from '@angular/core';
 
 import { DomSanitizer } from "@angular/platform-browser";
+import { MatSidenav } from '@angular/material/sidenav';
 
 import { Skatepark } from './skatepark.model';
 import { SkateparkCity } from './skatepark-city.model'
@@ -16,7 +17,8 @@ import { SkateparksService } from './skateparks.service';
 
 export class SkateparksComponent {
 
-    public showMenu: boolean = true;
+    @ViewChild('snav') snav: MatSidenav;
+
     public isLoading: boolean = true;
     public isSelected: boolean = false;
     public skateparks: Skatepark[];
@@ -60,10 +62,6 @@ export class SkateparksComponent {
     public selectSkatepark(skatepark: Skatepark) {
         this.selectedSkatepark = skatepark;
         this.isSelected = true;
-    }
-
-    public toggleMenu() {
-        this.showMenu = !this.showMenu;
     }
 }
 
