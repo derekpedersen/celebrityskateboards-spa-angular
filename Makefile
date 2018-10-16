@@ -1,31 +1,23 @@
-local-build:
-	npm install
-	npm rebuild node-sass
-	ng build
+export GIT_COMMIT_SHA = $(shell git rev-parse HEAD)
 
-local-run: local-build
+run:
 	ng serve --host 0.0.0.0 --disable-host-check
 
-docker-test:
-	docker build ./ -t celebrityskateboards-spa-angular
-	gcloud docker -- pull ${PROJECT_ID}/skatepark-api-go:latest
-	cd test_utils/ && docker-compose up -d
-
-docker-run:
-	gcloud docker -- pull ${PROJECT_ID}/skatepark-api-go:latest
-	cd /test_utils && docker-compose up -d
-
-.PHONY: build
 build:
+	npm install
+	npm rebuild node-sass
+	ng build --prod --build-optimizer
+
+docker: build
 	docker build ./ -t celebrityskateboards-spa-angular
 
-publish:
-	docker tag celebrityskateboards-spa-angular ${PROJECT_ID}/celebrityskateboards-spa-angular:latest
-	gcloud docker -- push ${PROJECT_ID}/celebrityskateboards-spa-angular:latest
+publish: docker
+	docker tag celebrityskateboards-spa-angular us.gcr.io/${GCLOUD_PROJECT_ID}/celebrityskateboards-spa-angular:${GIT_COMMIT_SHA}
+	gcloud docker -- push us.gcr.io/${GCLOUD_PROJECT_ID}/celebrityskateboards-spa-angular:${GIT_COMMIT_SHA}
 
-deploy:
-	kubectl delete deployment celebrityskateboards-spa-angular-deployment
-	kubectl apply -f ./kubernetes/deployment.yaml
-	kubectl apply -f ./kubernetes/service.yaml
+deploy: publish
+	sed -e 's/%GCLOUD_PROJECT_ID%/${GCLOUD_PROJECT_ID}/g' -e 's/%GIT_COMMIT_SHA%/${GIT_COMMIT_SHA}/g' ./kubernetes-deployment.yaml > deployment.sed.yaml
+	kubectl apply -f ./deployment.sed.yaml
+	kubectl apply -f ./kubernetes-service.yaml
 
-kubernetes: build publish deploy
+kubernetes: docker publish deploy
