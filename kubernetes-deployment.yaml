@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: celebrityskateboards-spa-angular
-        image: us.gcr.io/derekpedersen-195304/celebrityskateboards-spa-angular:latest
+        image: us.gcr.io/%GCLOUD_PROJECT_ID%/celebrityskateboards-spa-angular:%GIT_COMMIT_SHA%
         ports:
-        - containerPort: 4200
+        - containerPort: 80
       

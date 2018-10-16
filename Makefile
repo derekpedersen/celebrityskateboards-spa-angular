@@ -1,19 +1,19 @@
 export GIT_COMMIT_SHA = $(shell git rev-parse HEAD)
 
+run:
+	ng serve --host 0.0.0.0 --disable-host-check
+
 build:
 	npm install
 	npm rebuild node-sass
-	ng build
-
-run: local-build
-	ng serve --host 0.0.0.0 --disable-host-check
+	ng build --prod --build-optimizer
 
 docker: build
-	docker build ./ -t skatepark-api-go
+	docker build ./ -t celebrityskateboards-spa-angular
 
 publish: docker
-	docker tag skatepark-api-go us.gcr.io/${GCLOUD_PROJECT_ID}/skatepark-api-go:${GIT_COMMIT_SHA}
-	gcloud docker -- push us.gcr.io/${GCLOUD_PROJECT_ID}/skatepark-api-go:${GIT_COMMIT_SHA}
+	docker tag celebrityskateboards-spa-angular us.gcr.io/${GCLOUD_PROJECT_ID}/celebrityskateboards-spa-angular:${GIT_COMMIT_SHA}
+	gcloud docker -- push us.gcr.io/${GCLOUD_PROJECT_ID}/celebrityskateboards-spa-angular:${GIT_COMMIT_SHA}
 
 deploy: publish
 	sed -e 's/%GCLOUD_PROJECT_ID%/${GCLOUD_PROJECT_ID}/g' -e 's/%GIT_COMMIT_SHA%/${GIT_COMMIT_SHA}/g' ./kubernetes-deployment.yaml > deployment.sed.yaml

@@ -7,10 +7,10 @@ metadata:
   namespace: default
 spec:
   ports:
-  - name: 4200-to-4200-tcp
+  - name: 4200-to-80-tcp
     port: 4200
     protocol: TCP
-    targetPort: 4200
+    targetPort: 80
   selector:
     app: celebrityskateboards-spa-angular-deployment
   type: ClusterIP
