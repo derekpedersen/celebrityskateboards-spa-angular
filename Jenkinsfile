@@ -25,9 +25,9 @@ pipeline {
             }
         }
         stage('Publish') {
-            when {
-                expression { env.BRANCH_NAME == 'master' }
-            }
+            // when {
+            //     expression { env.BRANCH_NAME == 'master' }
+            // }
             steps {
                 withCredentials([[$class: 'StringBinding', credentialsId: 'GCLOUD_PROJECT_ID', variable: 'GCLOUD_PROJECT_ID']]) {
                     dir('/root/workspace/celebrityskateboards-spa-angular') {
