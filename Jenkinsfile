@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'k8s'
+        label 'k8s build-angular'
     }
     stages {
         stage('Checkout') {
