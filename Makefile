@@ -5,7 +5,6 @@ run:
 
 build:
 	npm install
-	npm rebuild node-sass
 	ng build --prod --build-optimizer
 
 docker: 
