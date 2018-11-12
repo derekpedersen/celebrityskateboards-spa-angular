@@ -4,6 +4,7 @@ run:
 	ng serve --host 0.0.0.0 --disable-host-check
 
 build:
+	npm install node-sass
 	npm install
 	ng build --prod --build-optimizer
 
