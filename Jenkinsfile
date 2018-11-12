@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'build-angular'
+        label 'build-angular-stable'
     }
     stages {
         stage('Checkout') {
