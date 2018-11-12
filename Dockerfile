@@ -2,7 +2,7 @@ FROM nginx:alpine
 
 LABEL author="Derek Pedersen"
 
-COPY ./dist /usr/share/nginx/html
+COPY ./dist/celebrityskateboards-spa-angular /usr/share/nginx/html
 
 EXPOSE 80 443
 
