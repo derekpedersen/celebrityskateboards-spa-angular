@@ -5,8 +5,8 @@ run:
 
 build:
 	npm install
-	ng build --prod --build-optimizer
-	
+	node --max-old-space-size=4096 ./node_modules/@angular/cli/bin/ng build --aot --build-optimizer
+
 test:
 	ng test --watch=false --browsers ChromeHeadless --code-coverage
 
