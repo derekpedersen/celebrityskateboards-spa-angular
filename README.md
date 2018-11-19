@@ -1,5 +1,8 @@
 # CelebrityskateboardsSpaAngular
 
+[![Build Status](https://jenkins.derekpedersen.com/buildStatus/icon?job=derekpedersen/celebrityskateboards-spa-angular/master&style=plastic&.png)](https://jenkins.derekpedersen.com/job/derekpedersen/job/celebrityskateboards-spa-angular/job/master/)
+[![Coverage Status](https://coveralls.io/repos/github/derekpedersen/celebrityskateboards-spa-angular/badge.png?branch=master)](https://coveralls.io/github/derekpedersen/celebrityskateboards-spa-angular)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
 ## Development server

@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'build-angular-stable'
+        label 'build-angular-latest'
     }
     stages {
         stage('Checkout') {
@@ -14,6 +14,13 @@ pipeline {
             steps{
                 dir('/root/workspace/celebrityskateboards-spa-angular') {
                     sh 'make build'
+                }
+            }
+        }
+        stage('Test') {
+            steps{
+                dir('/root/workspace/celebrityskateboards-spa-angular') {
+                    sh 'make test'
                 }
             }
         }
@@ -45,6 +52,16 @@ pipeline {
                     dir('/root/workspace/celebrityskateboards-spa-angular') {
                         sh 'make deploy'
                     }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            withCredentials([[$class: 'StringBinding', credentialsId: 'CELEBRITYSKATEBOARDS_SPA_COVERALLS_TOKEN', variable: 'COVERALLS_REPO_TOKEN']]) {
+                dir('/root/workspace/celebrityskateboards-spa-angular') {
+                    step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/cobertura-coverage.xml', failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false]) 
+                    sh 'make coveralls'
                 }
             }
         }
