@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Operator } from 'rxjs';
 
-import { Skatepark } from './skatepark.model';
+import { Skatepark } from '../skatepark/skatepark.model';
 import { SkateparkCity } from './skatepark-city.model';
 import { SkateparkState } from './skatepark-state.model';
 

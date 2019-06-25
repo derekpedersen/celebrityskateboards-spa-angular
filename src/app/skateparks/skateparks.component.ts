@@ -1,10 +1,8 @@
 import { Component, ViewChild, Pipe } from '@angular/core';
 
-import { DomSanitizer } from "@angular/platform-browser";
 import { MatSidenav } from '@angular/material/sidenav';
 
-import { Skatepark } from './skatepark.model';
-import { SkateparkCity } from './skatepark-city.model'
+import { Skatepark } from '../skatepark/skatepark.model';
 import { SkateparkState } from './skatepark-state.model'
 
 import { SkateparksService } from './skateparks.service';
@@ -21,37 +19,23 @@ export class SkateparksComponent {
 
     public isLoading: boolean = true;
     public isSelected: boolean = false;
-    public skateparks: Skatepark[];
-    public skateparkStates: SkateparkState[];
+    public states: SkateparkState[];
     public selectedSkatepark: Skatepark;
     public errorMessage: string;
 
     constructor(private service: SkateparksService) {
         this.selectedSkatepark = new Skatepark();
-        this.skateparks = new Array<Skatepark>();
     }
 
     ngOnInit() {
-        this.loadSkateparkStates();
+        this.loadstates();
     }
 
-    public loadSkateparks() {
-        this.isLoading = true;
-        this.service.getSkateparks()
-            .subscribe(result => {
-                this.skateparks = result;
-                this.isLoading = false;
-            }, error => {
-                this.errorMessage = <any>error;
-                this.isLoading = false;
-            });
-    }
-
-    public loadSkateparkStates() {
+    public loadstates() {
         this.isLoading = true;
         this.service.getSkateparkStates()
             .subscribe(result => {
-                this.skateparkStates = result;
+                this.states = result;
                 this.isLoading = false;
             }, error => {
                 this.errorMessage = <any>error;
@@ -62,14 +46,5 @@ export class SkateparksComponent {
     public selectSkatepark(skatepark: Skatepark) {
         this.selectedSkatepark = skatepark;
         this.isSelected = true;
-    }
-}
-
-@Pipe({ name: 'safeHtml' })
-export class Safe {
-    constructor(private sanitizer: DomSanitizer) { }
-
-    transform(style: string) {
-        return this.sanitizer.bypassSecurityTrustHtml(style);
     }
 }

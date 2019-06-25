@@ -8,7 +8,7 @@
 <mat-sidenav-container *ngIf="!isLoading" fxFlexFill fxLayout="column" (backdropClick)="snav.close()">
         <mat-sidenav #snav>
                 <mat-accordion>
-                        <mat-expansion-panel *ngFor="let state of skateparkStates">
+                        <mat-expansion-panel *ngFor="let state of states">
                                 <mat-expansion-panel-header>
                                         {{ state.state }}
                                 </mat-expansion-panel-header>
@@ -42,23 +42,7 @@
                         </mat-card>
                 </div>
                 <div *ngIf="isSelected">
-                        <mat-card>
-                                <mat-card-title>
-                                        {{ selectedSkatepark.name }}
-                                </mat-card-title>
-                                <mat-card-subtitle>
-                                        {{ selectedSkatepark.description }}
-                                </mat-card-subtitle>
-                                <mat-card-actions style="margin: 0 auto;">
-                                        <div class="content-image" [innerHTML]="selectedSkatepark?.address?.googleMaps?.embedMap | safeHtml" style="margin: 0 auto;"></div>
-                                </mat-card-actions>
-                                <mat-card-content *ngFor="let image of selectedSkatepark?.album?.images">
-                                        <mat-card-subtitle>
-                                                <img src="{{ image.link }}" class="content-image" />
-                                        </mat-card-subtitle>
-                                        {{ image.description }}
-                                </mat-card-content>
-                        </mat-card>
+                        <skatepark [skatepark]={{selectedSkatepark}}></skatepark>
                 </div>
         </mat-sidenav-content>
 </mat-sidenav-container>

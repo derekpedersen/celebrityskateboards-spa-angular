@@ -1,4 +1,4 @@
-import { Skatepark } from './skatepark.model';
+import { Skatepark } from '../skatepark/skatepark.model';
 
 export class SkateparkCity {
     public city: string;
