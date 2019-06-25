@@ -21,8 +21,8 @@ publish:
 	gcloud docker -- push us.gcr.io/${GCLOUD_PROJECT_ID}/celebrityskateboards-spa-angular:${GIT_COMMIT_SHA}
 
 deploy:
-	sed -e 's/%GCLOUD_PROJECT_ID%/${GCLOUD_PROJECT_ID}/g' -e 's/%GIT_COMMIT_SHA%/${GIT_COMMIT_SHA}/g' ./kubernetes-deployment.yaml > deployment.sed.yaml
+	sed -e 's/%GCLOUD_PROJECT_ID%/${GCLOUD_PROJECT_ID}/g' -e 's/%GIT_COMMIT_SHA%/${GIT_COMMIT_SHA}/g' ./.k8s/deployment.yaml > deployment.sed.yaml
 	kubectl apply -f ./deployment.sed.yaml
-	kubectl apply -f ./kubernetes-service.yaml
+	kubectl apply -f ./.k8s/service.yaml
 
 kubernetes: build docker publish deploy
