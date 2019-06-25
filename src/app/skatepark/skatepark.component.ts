@@ -9,7 +9,7 @@ import { Skatepark } from './skatepark.model';
   styleUrls: ['./skatepark.style.css']
 })
 
-export class skateparkComponent {
+export class SkateparkComponent {
     @Input() skatepark: Skatepark;
 
     ngOnInit() {

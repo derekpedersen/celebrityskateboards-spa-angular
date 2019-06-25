@@ -6,7 +6,7 @@ import { CommonModule }   from '@angular/common';
 
 import { SkateparksComponent } from './skateparks.component';
 import { SkateparksService } from './skateparks.service';
-import { Safe } from '../skatepark/skatepark.component';
+import { Safe, SkateparkComponent } from '../skatepark/skatepark.component';
 import { SkateparksRoutingModule } from './skateparks-routing.module';
 
 @NgModule({
@@ -15,6 +15,7 @@ import { SkateparksRoutingModule } from './skateparks-routing.module';
     SkateparksRoutingModule
   ],
   declarations: [
+    SkateparkComponent,
     SkateparksComponent,
     Safe
   ],
