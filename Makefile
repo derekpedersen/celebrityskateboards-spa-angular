@@ -1,14 +1,19 @@
 export GIT_COMMIT_SHA = $(shell git rev-parse HEAD)
 
+test:
+	ng test --watch=false --browsers ChromeHeadless --code-coverage
+	
 run:
 	ng serve --host 0.0.0.0 --disable-host-check
+
+skatepark-api:
+	cd .test && docker-compose up -d --remove-orphans
 
 build:
 	npm install
 	ng build --prod --build-optimizer --aot
 
-test:
-	ng test --watch=false --browsers ChromeHeadless --code-coverage
+develop: build skatepark-api run
 
 coveralls:
 	cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js

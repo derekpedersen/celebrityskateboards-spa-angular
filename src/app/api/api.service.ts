@@ -10,7 +10,7 @@ import { Jsonp } from '@angular/http/src/http';
 export class ApiService {
 
     private _headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    private _baseUrl = "/api/";
+    private _baseUrl = "http://localhost:8080/api/";
 
     public errorMessage: string;
 
