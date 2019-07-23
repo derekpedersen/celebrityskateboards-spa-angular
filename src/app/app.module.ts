@@ -11,9 +11,9 @@ import { SharedModule } from './shared/shared.module';
     AppComponent
   ],
   imports: [
-    AppRoutingModule,
     SharedModule,
-    SkateparksModule
+    SkateparksModule,
+    AppRoutingModule
   ],
   providers: [
   ],
