@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { SkateparksModule } from './skateparks/skateparks.module';
 import { SharedModule } from './shared/shared.module';
+import { StatesModule } from './states/states.module';
+import { CitiesModule } from './cities/cities.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     SharedModule,
     SkateparksModule,
+    StatesModule,
+    CitiesModule,
     AppRoutingModule
   ],
   providers: [

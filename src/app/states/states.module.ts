@@ -1,0 +1,16 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { StatesRoutingModule } from './states.routing';
+import { StatesComponent } from './states.component';
+
+@NgModule({
+  declarations: [
+    StatesComponent
+  ],
+  imports: [
+    CommonModule,
+    StatesRoutingModule
+  ]
+})
+export class StatesModule { }
