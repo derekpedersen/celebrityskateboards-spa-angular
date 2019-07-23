@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { StatesRoutingModule } from './states.routing';
 import { StatesComponent } from './states.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import { StatesComponent } from './states.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     StatesRoutingModule
   ]
 })
