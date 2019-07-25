@@ -1,5 +1,5 @@
 <mat-list>
-  <mat-list-item *ngFor="let city of state.cities">
+  <mat-list-item *ngFor="let city of cities">
           <button mat-menu-item *ngIf="city.skateparks.length > 1" [matMenuTriggerFor]="skateparkMenu">{{ city.city }}</button>
           <button mat-menu-item *ngIf="city.skateparks.length === 1" (click)="selectSkatepark(city.skateparks[0])">{{ city.city }}</button>
           <mat-menu #skateparkMenu="matMenu" [overlapTrigger]="true">

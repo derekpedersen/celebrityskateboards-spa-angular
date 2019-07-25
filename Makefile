@@ -9,11 +9,11 @@ run:
 skatepark-api:
 	cd .test && docker-compose up -d --remove-orphans
 
+develop: build skatepark-api run
+
 build:
 	npm install
 	ng build --prod --build-optimizer --aot
-
-develop: build skatepark-api run
 
 coveralls:
 	cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
