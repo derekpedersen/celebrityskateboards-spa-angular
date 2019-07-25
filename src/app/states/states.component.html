@@ -1,5 +1,5 @@
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let state of states">
+  <mat-expansion-panel *ngFor="let state of states" [expanded]='open(state)' routerLink='/skateparks/{{state.state}}'>
           <mat-expansion-panel-header>
                   {{ state.state }}
           </mat-expansion-panel-header>

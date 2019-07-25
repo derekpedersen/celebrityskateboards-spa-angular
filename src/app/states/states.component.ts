@@ -13,6 +13,7 @@ export class StatesComponent implements OnInit {
   public isLoading: boolean = true;
   public isSelected: boolean = false;
   public states: State[];
+  public state: String;
   public errorMessage: string;
 
   constructor(
@@ -21,7 +22,8 @@ export class StatesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.params.state)
+    this.state = this.route.snapshot.params.state;
+    console.log(this.route.snapshot.params.state);
     this.loadstates();
   }
 
@@ -35,6 +37,13 @@ export class StatesComponent implements OnInit {
         this.errorMessage = <any>error;
         this.isLoading = false;
       });
+  }
+
+  public open(state: State): boolean {
+    if (this.state.toLowerCase() === state.state.toLowerCase()) {
+      return true;
+    }
+    return false;
   }
 
 }
