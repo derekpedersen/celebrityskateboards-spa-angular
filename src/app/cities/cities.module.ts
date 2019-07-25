@@ -13,6 +13,9 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     SharedModule,
     CitiesRoutingModule
+  ],
+  exports: [
+    CitiesComponent
   ]
 })
 export class CitiesModule { }

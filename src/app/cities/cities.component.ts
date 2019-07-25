@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { City } from './city.model';
 
 @Component({
@@ -8,7 +8,7 @@ import { City } from './city.model';
 })
 export class CitiesComponent implements OnInit {
 
-  public cities: City[];
+  @Input() cities: City[];
 
   constructor() { }
 

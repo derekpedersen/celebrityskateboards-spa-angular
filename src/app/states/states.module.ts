@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { StatesRoutingModule } from './states.routing';
 import { StatesComponent } from './states.component';
 import { SharedModule } from '../shared/shared.module';
+import { CitiesModule } from '../cities/cities.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
+    CitiesModule,
     StatesRoutingModule
   ]
 })

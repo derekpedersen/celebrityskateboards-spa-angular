@@ -3,18 +3,6 @@
           <mat-expansion-panel-header>
                   {{ state.state }}
           </mat-expansion-panel-header>
-          <mat-list>
-                  <mat-list-item *ngFor="let city of state.cities">
-                          <button mat-menu-item *ngIf="city.skateparks.length > 1" [matMenuTriggerFor]="skateparkMenu">{{ city.city }}</button>
-                          <button mat-menu-item *ngIf="city.skateparks.length === 1" (click)="selectSkatepark(city.skateparks[0])">{{ city.city }}</button>
-                          <mat-menu #skateparkMenu="matMenu" [overlapTrigger]="true">
-                                  <mat-list>
-                                          <mat-list-item *ngFor="let skatepark of city.skateparks">
-                                                  <button mat-menu-item (click)="selectSkatepark(skatepark)">{{ skatepark.name }}</button>
-                                          </mat-list-item>
-                                  </mat-list>
-                          </mat-menu>
-                  </mat-list-item>
-          </mat-list>
+          <cities cities={{state.cities}}></cities>
   </mat-expansion-panel>
 </mat-accordion>
