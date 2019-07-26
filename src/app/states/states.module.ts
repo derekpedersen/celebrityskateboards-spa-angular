@@ -15,6 +15,9 @@ import { CitiesModule } from '../cities/cities.module';
     SharedModule,
     CitiesModule,
     StatesRoutingModule
+  ],
+  exports: [
+    StatesComponent
   ]
 })
 export class StatesModule { }

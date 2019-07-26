@@ -9,11 +9,13 @@ import { SkateparksService } from './skateparks.service';
 import { Safe, SkateparkComponent } from '../skatepark/skatepark.component';
 import { SkateparksRoutingModule } from './skateparks.routing';
 import { SharedModule } from '../shared/shared.module';
+import { StatesModule } from '../states/states.module';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
+    StatesModule,
     SkateparksRoutingModule
   ],
   declarations: [

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SkateparksComponent } from './skateparks/skateparks.component'
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
-    { path: '', component: SkateparksComponent },
+    { path: '', component: HomepageComponent },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { City } from './city.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'cities',
@@ -10,9 +11,12 @@ export class CitiesComponent implements OnInit {
 
   @Input() cities: City[];
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    console.log(this.route.snapshot.params.city);
   }
 
 }

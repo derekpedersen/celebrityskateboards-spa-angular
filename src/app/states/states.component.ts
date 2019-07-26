@@ -40,10 +40,10 @@ export class StatesComponent implements OnInit {
   }
 
   public open(state: State): boolean {
-    if (this.state.toLowerCase() === state.state.toLowerCase()) {
+    // TODO: clean this up
+    if ((this.state !== undefined && state !== undefined) && (this.state.toLowerCase() === state.state.toLowerCase())) {
       return true;
     }
     return false;
   }
-
 }

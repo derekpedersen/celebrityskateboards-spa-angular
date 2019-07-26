@@ -7,16 +7,18 @@ import { SkateparksModule } from './skateparks/skateparks.module';
 import { SharedModule } from './shared/shared.module';
 import { StatesModule } from './states/states.module';
 import { CitiesModule } from './cities/cities.module';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomepageComponent
   ],
   imports: [
     SharedModule,
-    SkateparksModule,
-    StatesModule,
     CitiesModule,
+    StatesModule,
+    SkateparksModule,
     AppRoutingModule
   ],
   providers: [

@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CitiesComponent } from './cities.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'skateparks/:state/:city', component: CitiesComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
