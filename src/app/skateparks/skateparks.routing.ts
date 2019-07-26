@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SkateparksComponent } from './skateparks.component';
 
 const skateparkRoutes: Routes = [
-  { path: 'skateparks',  component: SkateparksComponent }
+  //{ path: 'skateparks',  component: SkateparksComponent }
 ];
 
 //taken from angular.io

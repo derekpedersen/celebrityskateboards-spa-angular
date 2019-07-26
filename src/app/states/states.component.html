@@ -3,6 +3,6 @@
           <mat-expansion-panel-header>
                   {{ state.state }}
           </mat-expansion-panel-header>
-          <cities cities={{state.cities}}></cities>
+          <cities [cities]='state.cities'></cities>
   </mat-expansion-panel>
 </mat-accordion>
