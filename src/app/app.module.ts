@@ -16,8 +16,8 @@ import { HomepageComponent } from './homepage/homepage.component';
   ],
   imports: [
     SharedModule,
-    CitiesModule,
     StatesModule,
+    CitiesModule,
     SkateparksModule,
     AppRoutingModule
   ],

@@ -35,4 +35,10 @@ export class SkateparksService {
 
         return this.apiService.get(resourceUrl);
     }
+
+    getSkateparkCities(state: string): Observable<SkateparkState[]> {
+        var resourceUrl = this.skateparkUrl + "/states/" + state;
+
+        return this.apiService.get(resourceUrl);
+    }
 }

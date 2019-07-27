@@ -7,6 +7,7 @@ run:
 	ng serve --host 0.0.0.0 --disable-host-check
 
 skatepark-api:
+	cd .test && docker-compose down
 	cd .test && docker-compose up -d --remove-orphans
 
 develop: build skatepark-api run
