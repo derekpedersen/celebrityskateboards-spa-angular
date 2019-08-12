@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { City } from './city.model';
+import { Cities } from './city.model';
 import { ActivatedRoute } from '@angular/router';
-import { SkateparksService } from '../skateparks/skateparks.service';
+import { SkateparkService } from '../skatepark/skatepark.service';
 
 @Component({
   selector: 'cities',
@@ -10,33 +10,39 @@ import { SkateparksService } from '../skateparks/skateparks.service';
 })
 export class CitiesComponent implements OnInit {
 
-  @Input() cities: City[];
-  public state: string;
+  @Input() cities: Cities;
+  @Input() state: string;
   public city: string;
   public isLoading: boolean;
+  public errorMessage: string;
 
   constructor(
     private route: ActivatedRoute,
-    private service: SkateparksService
+    private service: SkateparkService
   ) { }
 
   ngOnInit() {
-    this.state = this.route.snapshot.params.state;
+    if (this.state === undefined || this.state === null || (this.state.length === 0)) {
+      this.state = this.route.snapshot.params.state;
+    }
     console.log(this.state)
     this.city = this.route.snapshot.params.city;
     console.log(this.city);
+    if (this.cities === undefined || this.cities === null || this.cities.size === 0) {
+      this.loadCities(this.state)
+    }
   }
 
-  public loadCities() {
+  public loadCities(state: string) {
     this.isLoading = true;
     // TODO: this should make a call to get the cities for a specific state
     //       it will require an update to the skatepark-api for states/:state to return only the cities
-    this.service.getSkateparkStates()
+    this.service.getSkateparkCities(state)
       .subscribe(result => {
-        //this.states = result;
+        this.cities = result;
         this.isLoading = false;
       }, error => {
-        //this.errorMessage = <any>error;
+        this.errorMessage = <any>error;
         this.isLoading = false;
       });
   }

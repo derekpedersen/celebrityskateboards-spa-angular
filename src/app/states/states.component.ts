@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { State } from './state.model';
-import { SkateparksService } from '../skateparks/skateparks.service';
+import { States } from './state.model';
+import { SkateparkService } from '../skatepark/skatepark.service';
+import { Cities } from '../cities/city.model';
 
 @Component({
   selector: 'states',
@@ -12,13 +13,13 @@ export class StatesComponent implements OnInit {
 
   public isLoading: boolean = true;
   public isSelected: boolean = false;
-  public states: State[];
+  public states: States;
   public state: String;
   public errorMessage: string;
 
   constructor(
     private route: ActivatedRoute,
-    private service: SkateparksService
+    private service: SkateparkService
   ) { }
 
   ngOnInit() {
@@ -39,9 +40,9 @@ export class StatesComponent implements OnInit {
       });
   }
 
-  public open(state: State): boolean {
+  public open(state: string): boolean {
     // TODO: clean this up
-    if ((this.state !== undefined && state !== undefined) && (this.state.toLowerCase() === state.state.toLowerCase())) {
+    if ((this.state !== undefined && state !== undefined) && (this.state.toLowerCase() === state.toLowerCase())) {
       return true;
     }
     return false;

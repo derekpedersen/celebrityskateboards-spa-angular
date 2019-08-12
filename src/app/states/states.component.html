@@ -1,8 +1,8 @@
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let state of states" [expanded]='open(state)' routerLink='/skateparks/{{state.state}}'>
+  <mat-expansion-panel *ngFor="let state of states | keyvalue" [expanded]='open(state.key)' routerLink='/skateparks/{{state.key}}'>
           <mat-expansion-panel-header>
-                  {{ state.state }}
+                  {{ state.key }}
           </mat-expansion-panel-header>
-          <cities [cities]='state.cities'></cities>
+          <cities [state]='state.key' [cities]='state.value'></cities>
   </mat-expansion-panel>
 </mat-accordion>
