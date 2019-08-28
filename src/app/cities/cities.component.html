@@ -1,11 +1,11 @@
 <mat-list>
   <mat-list-item *ngFor="let city of cities | keyvalue">
           <button mat-menu-item *ngIf="city.value.length > 1" [matMenuTriggerFor]="skateparkMenu">{{ city.key }}</button>
-          <button mat-menu-item *ngIf="city.value.length === 1" routerLink='/skateparks/{{state}}/{{city.key}}'>{{ city.key }}</button>
+          <button mat-menu-item *ngIf="city.value.length === 1" routerLink='/skateparks/{{state}}/{{city.key}}/{{city.value[0].name}}'>{{ city.key }}</button>
           <mat-menu #skateparkMenu="matMenu" [overlapTrigger]="true">
                   <mat-list>
                           <mat-list-item *ngFor="let skatepark of city.value">
-                                  <button mat-menu-item routerLink='/skateparks/{{state}}/{{skatepark.name}}'>{{ skatepark.name }}</button>
+                                  <button mat-menu-item routerLink='/skateparks/{{state}}/{{city.key}}/{{skatepark.name}}'>{{ skatepark.name }}</button>
                           </mat-list-item>
                   </mat-list>
           </mat-menu>

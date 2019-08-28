@@ -30,6 +30,12 @@ export class SkateparkService {
         return this.apiService.get(resourceUrl);
     }
 
+    getSkateparkByName(name: string) {
+        var resourceUrl = this.skateparkUrl + "/" + name;
+
+        return this.apiService.get(resourceUrl);
+    }
+
     getSkateparkStates(): Observable<States> {
         var resourceUrl = this.skateparkUrl + "/states";
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+//import { ActivatedRoute } from '@angular/router';
 import { States } from './state.model';
 import { SkateparkService } from '../skatepark/skatepark.service';
 import { Cities } from '../cities/city.model';
@@ -18,13 +18,13 @@ export class StatesComponent implements OnInit {
   public errorMessage: string;
 
   constructor(
-    private route: ActivatedRoute,
+    //private route: ActivatedRoute,
     private service: SkateparkService
   ) { }
 
   ngOnInit() {
-    this.state = this.route.snapshot.params.state;
-    console.log(this.route.snapshot.params.state);
+    //this.state = this.route.snapshot.params.state;
+    //console.log(this.route.snapshot.params.state);
     this.loadstates();
   }
 

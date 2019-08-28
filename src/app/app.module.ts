@@ -16,9 +16,9 @@ import { SkateparkModule } from './skatepark/skatepark.module';
   ],
   imports: [
     SharedModule,
-    StatesModule,
-    CitiesModule,
     SkateparkModule,
+    CitiesModule,
+    StatesModule,
     AppRoutingModule
   ],
   providers: [
