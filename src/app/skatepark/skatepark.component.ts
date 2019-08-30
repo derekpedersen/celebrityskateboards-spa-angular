@@ -2,7 +2,7 @@ import { Component, Pipe, Input } from '@angular/core';
 import { DomSanitizer } from "@angular/platform-browser";
 
 import { Skatepark } from './skatepark.model';
-//import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { SkateparkService } from './skatepark.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { SkateparkService } from './skatepark.service';
 
 export class SkateparkComponent {
 
-    @Input() skatepark: Skatepark;
+    public skatepark: Skatepark;
     public isLoading: boolean;
     public errorMessage: string;
 
@@ -21,9 +21,14 @@ export class SkateparkComponent {
     }
 
     constructor(
-    //private route: ActivatedRoute,
+    private route: ActivatedRoute,
     private service: SkateparkService
-    ) { }
+    ) {
+        this.skatepark = new Skatepark;
+        const skateparkname = this.route.snapshot.params.skatepark;
+        console.log(skateparkname);
+        this.loadSkatepark(skateparkname);
+    }
 
     public loadSkatepark(skatepark: string) {
         this.isLoading = true;

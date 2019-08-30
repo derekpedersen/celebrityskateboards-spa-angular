@@ -30,6 +30,7 @@ export class SkateparkService {
         return this.apiService.get(resourceUrl);
     }
 
+    // TODO: implement this yo!
     getSkateparkByName(name: string) {
         var resourceUrl = this.skateparkUrl + "/" + name;
 
