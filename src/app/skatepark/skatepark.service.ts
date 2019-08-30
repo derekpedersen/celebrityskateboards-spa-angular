@@ -24,27 +24,21 @@ export class SkateparkService {
         return this.apiService.get(resourceUrl);
     }
 
-    getSkatepark(id: number) {
-        var resourceUrl = this.skateparkUrl + "/" + id;
-
-        return this.apiService.get(resourceUrl);
-    }
-
-    // TODO: implement this yo!
-    getSkateparkByName(name: string) {
-        var resourceUrl = this.skateparkUrl + "/" + name;
-
-        return this.apiService.get(resourceUrl);
-    }
-
     getSkateparkStates(): Observable<States> {
-        var resourceUrl = this.skateparkUrl + "/states";
+        var resourceUrl = this.skateparkUrl + '/states';
 
         return this.apiService.get(resourceUrl);
     }
 
     getSkateparkCities(state: string): Observable<Cities> {
-        var resourceUrl = this.skateparkUrl + "/states/" + state;
+        var resourceUrl = this.skateparkUrl + '/' + state;
+
+        return this.apiService.get(resourceUrl);
+    }
+
+    // TODO: implement this yo!
+    getSkateparkByName(state, city, name: string) {
+        var resourceUrl = this.skateparkUrl + '/' + state + "/" + city + "/" + name;
 
         return this.apiService.get(resourceUrl);
     }

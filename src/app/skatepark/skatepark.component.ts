@@ -25,17 +25,19 @@ export class SkateparkComponent {
     private service: SkateparkService
     ) {
         this.skatepark = new Skatepark;
-        const skateparkname = this.route.snapshot.params.skatepark;
-        console.log(skateparkname);
-        this.loadSkatepark(skateparkname);
+        this.loadSkatepark(
+            this.route.snapshot.params.state,
+            this.route.snapshot.params.city,
+            this.route.snapshot.params.skatepark,
+        );
     }
 
-    public loadSkatepark(skatepark: string) {
+    public loadSkatepark(state, city, skatepark: string) {
         this.isLoading = true;
 
         // TODO: this should make a call to get the cities for a specific state
         //       it will require an update to the skatepark-api for states/:state to return only the cities
-        this.service.getSkateparkByName(skatepark)
+        this.service.getSkateparkByName(state, city, skatepark)
         .subscribe(result => {
             this.skatepark = result;
             this.isLoading = false;
