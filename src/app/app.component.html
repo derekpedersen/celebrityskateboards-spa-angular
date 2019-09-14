@@ -1,2 +1,16 @@
-    <!--router view-->
-    <router-outlet fxFlexFill></router-outlet>
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="snav.open()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span routerLink='/'>Celebrity Skateboards</span>
+</mat-toolbar>
+<mat-sidenav-container fxFlexFill fxLayout="column" (backdropClick)="snav.close()">
+    <mat-sidenav #snav>
+        <mat-accordion>
+            <states></states>
+        </mat-accordion>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet fxFlexFill></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

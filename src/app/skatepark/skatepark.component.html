@@ -1,0 +1,17 @@
+<mat-card>
+    <mat-card-title>
+            {{ skatepark.name }}
+    </mat-card-title>
+    <mat-card-subtitle>
+            {{ skatepark.description }}
+    </mat-card-subtitle>
+    <mat-card-actions style="margin: 0 auto;">
+            <div class="content-image" [innerHTML]="skatepark?.address?.googleMaps?.embedMap | safeHtml" style="margin: 0 auto;"></div>
+    </mat-card-actions>
+    <mat-card-content *ngFor="let image of skatepark?.album?.images">
+            <mat-card-subtitle>
+                    <img src="{{ image.link }}" class="content-image" />
+            </mat-card-subtitle>
+            {{ image.description }}
+    </mat-card-content>
+</mat-card>
