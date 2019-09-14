@@ -9,5 +9,5 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class AppComponent {
   title = 'app';
 
-  @ViewChild('snav') snav: MatSidenav;
+  @ViewChild('snav', { static: true }) snav: MatSidenav;
 }
