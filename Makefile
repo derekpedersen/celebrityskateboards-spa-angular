@@ -20,7 +20,7 @@ coveralls:
 	cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 docker: 
-	docker build ./ -t celebrityskateboards-spa-angular
+	docker build ./ -t celebrityskateboards-spa-angular --no-cache
 
 publish: 
 	docker tag celebrityskateboards-spa-angular us.gcr.io/${GCLOUD_PROJECT_ID}/celebrityskateboards-spa-angular:${GIT_COMMIT_SHA}
