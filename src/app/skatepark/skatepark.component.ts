@@ -1,11 +1,12 @@
-import { Component, Pipe, Input } from '@angular/core';
-import { DomSanitizer } from "@angular/platform-browser";
+import { Component, Pipe, Input, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { Skatepark } from './skatepark.model';
 import { ActivatedRoute } from '@angular/router';
 import { SkateparkService } from './skatepark.service';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'skatepark',
   templateUrl: './skatepark.component.html',
   styleUrls: ['./skatepark.style.css']
@@ -49,7 +50,7 @@ export class SkateparkComponent {
 }
 
 @Pipe({ name: 'safeHtml' })
-export class Safe {
+export class Safe implements PipeTransform {
     constructor(private sanitizer: DomSanitizer) { }
 
     transform(style: string) {
