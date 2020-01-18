@@ -11,7 +11,7 @@ import { Cities } from '../cities/city.model';
 export class SkateparkService {
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
-    private skateparkUrl = 'skatepark';  // URL to web api
+    private skateparkUrl = 'skateparks';  // URL to web api
 
     public skateparks: Skatepark[];
     public skatepark: Skatepark;
@@ -25,7 +25,7 @@ export class SkateparkService {
     }
 
     getSkateparkStates(): Observable<States> {
-        var resourceUrl = this.skateparkUrl + '/states';
+        var resourceUrl = this.skateparkUrl + '';
 
         return this.apiService.get(resourceUrl);
     }

@@ -31,4 +31,4 @@ deploy:
 	kubectl apply -f ./deployment.sed.yaml
 	kubectl apply -f ./.k8s/service.yaml
 
-kubernetes: build docker publish deploy
+kubernetes: build docker publish
