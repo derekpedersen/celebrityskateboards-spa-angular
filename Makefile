@@ -13,6 +13,7 @@ skatepark-api:
 develop: build skatepark-api run
 
 build:
+	rm -rf dist
 	npm install
 	ng build --prod --build-optimizer --aot
 
@@ -27,8 +28,6 @@ publish:
 	gcloud docker -- push us.gcr.io/${GCLOUD_PROJECT_ID}/celebrityskateboards-spa-angular:${GIT_COMMIT_SHA}
 
 deploy:
-	sed -e 's/%GCLOUD_PROJECT_ID%/${GCLOUD_PROJECT_ID}/g' -e 's/%GIT_COMMIT_SHA%/${GIT_COMMIT_SHA}/g' ./.k8s/deployment.yaml > deployment.sed.yaml
-	kubectl apply -f ./deployment.sed.yaml
-	kubectl apply -f ./.k8s/service.yaml
+	helm upgrade celebrityskateboards .helm
 
-kubernetes: build docker publish
+kubernetes: build docker publish deploy
