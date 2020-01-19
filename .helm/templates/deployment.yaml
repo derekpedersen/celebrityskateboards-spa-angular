@@ -27,6 +27,12 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: IMGUR_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: imgur-api
+                key: imgurAPIKey
           ports:
             - name: http
               containerPort: 80
