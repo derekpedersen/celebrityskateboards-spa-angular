@@ -26,11 +26,13 @@ export class SkateparkComponent {
     private service: SkateparkService
     ) {
         this.skatepark = new Skatepark;
-        this.loadSkatepark(
-            this.route.snapshot.params.state,
-            this.route.snapshot.params.city,
-            this.route.snapshot.params.skatepark,
-        );
+        this.route.params.subscribe(routeParams => {
+            this.loadSkatepark(
+                routeParams.state,
+                routeParams.city,
+                routeParams.skatepark,
+            );
+        });
     }
 
     public loadSkatepark(state, city, skatepark: string) {

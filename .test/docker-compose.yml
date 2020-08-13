@@ -1,10 +1,10 @@
 version: "2"
 services:
   api:
-    image: skatepark-api-go:latest
+    image: us.gcr.io/sleipnir/skatepark-api-go:283903deed5f0a6612455c1902042286640c09e7
     ports:
       - "8080:8080"
     environment: 
-      - ORIGIN_ALLOWED=
-      - SKATEPARKS_FILE=./repository/json/skateparks.json
+      - ORIGIN_ALLOWED
+      - SKATEPARKS_FILE=./repository/json/
       - IMGUR_API_KEY

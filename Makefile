@@ -4,7 +4,7 @@ test:
 	ng test --watch=false --browsers ChromeHeadless --code-coverage
 	
 run:
-	ng serve --host 0.0.0.0 --disable-host-check
+	ng serve --host 0.0.0.0 --disable-host-check --proxy-config ./proxy.config.json
 
 skatepark-api:
 	cd .test && docker-compose down
