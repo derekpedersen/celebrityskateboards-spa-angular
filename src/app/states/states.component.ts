@@ -20,24 +20,28 @@ export class StatesComponent implements OnInit {
   constructor(
     //private route: ActivatedRoute,
     private service: SkateparkService
-  ) { }
+  ) {
+    this.states = this.service.states;
+   }
 
   ngOnInit() {
     //this.state = this.route.snapshot.params.state;
     //console.log(this.route.snapshot.params.state);
+    // this.states = this.service.states;
     this.loadstates();
   }
 
   public loadstates() {
-    this.isLoading = true;
-    this.service.getSkateparkStates()
-      .subscribe(result => {
-        this.states = result;
-        this.isLoading = false;
-      }, error => {
-        this.errorMessage = <any>error;
-        this.isLoading = false;
-      });
+    // this.isLoading = true;
+    // this.service.getSkateparkStates()
+    //   .subscribe(result => {
+    //     this.states = result;
+    //     this.isLoading = false;
+    //   }, error => {
+    //     this.errorMessage = <any>error;
+    //     this.isLoading = false;
+    //   });
+    this.states = this.service.states;
   }
 
   public open(state: string): boolean {

@@ -6,17 +6,27 @@ import { Skatepark } from './skatepark.model';
 import { ApiService } from '../api/api.service';
 import { States } from '../states/state.model';
 import { Cities } from '../cities/city.model';
+import { resolve } from 'dns';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class SkateparkService {
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
     private skateparkUrl = 'skateparks';  // URL to web api
 
+    public states: Observable<States>;
+    public cities: Cities;
     public skateparks: Skatepark[];
     public skatepark: Skatepark;
+    public loading: boolean;
 
-    constructor(private apiService: ApiService) { }
+    constructor(
+        private apiService: ApiService
+    ) {
+        this.states = this.getSkateparkStates().share()
+    }
 
     getSkateparks(): Observable<Skatepark[]> {
         var resourceUrl = this.skateparkUrl;
