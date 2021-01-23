@@ -8,7 +8,7 @@
 <mat-sidenav-container fxFlexFill fxLayout="column" (backdropClick)="snav.close()">
     <mat-sidenav #snav>
         <mat-accordion>
-            <states></states>
+            <states [states]="states"></states>
         </mat-accordion>
     </mat-sidenav>
     <mat-sidenav-content>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { States } from './state.model';
 import { SkateparkService } from '../skatepark/skatepark.service';
 
@@ -9,9 +9,9 @@ import { SkateparkService } from '../skatepark/skatepark.service';
 })
 export class StatesComponent implements OnInit {
 
-  public isLoading: boolean = true;
+  @Input() states: States; 
+
   public isSelected: boolean = false;
-  public states: States;
   public state: String;
   public errorMessage: string;
 
