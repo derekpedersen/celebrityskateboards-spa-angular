@@ -12,10 +12,8 @@ import { Cities } from '../cities/city.model';
 })
 export class SkateparkService {
 
-    private headers = new Headers({ 'Content-Type': 'application/json' });
     private skateparkUrl = 'skateparks';
 
-    public states: Observable<States>;
     public cities: Cities;
     public skateparks: Skatepark[];
     public skatepark: Skatepark;
@@ -23,9 +21,7 @@ export class SkateparkService {
 
     constructor(
         private apiService: ApiService
-    ) {
-        this.states = this.getSkateparkStates().share();
-    }
+    ) { }
 
     getSkateparks(): Observable<Skatepark[]> {
         const resourceUrl = this.skateparkUrl;
@@ -45,7 +41,6 @@ export class SkateparkService {
         return this.apiService.get(resourceUrl);
     }
 
-    // TODO: implement this yo!
     getSkateparkByName(state: string, city: string, name: string) {
         const resourceUrl = this.skateparkUrl + '/' + state + '/' + city + '/' + name;
 

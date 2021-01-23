@@ -1,17 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { States } from './state.model';
-import { SkateparkService } from '../skatepark/skatepark.service';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'states',
   templateUrl: './states.component.html',
   styleUrls: ['./states.component.scss']
 })
 export class StatesComponent implements OnInit {
 
-  @Input() states: States; 
+  @Input() states: States;
 
-  public isSelected: boolean = false;
+  public isSelected = false;
   public state: String;
   public errorMessage: string;
 
@@ -20,7 +20,6 @@ export class StatesComponent implements OnInit {
   ngOnInit() {}
 
   public open(state: string): boolean {
-    // TODO: clean this up
     if ((this.state !== undefined && state !== undefined) && (this.state.toLowerCase() === state.toLowerCase())) {
       return true;
     }

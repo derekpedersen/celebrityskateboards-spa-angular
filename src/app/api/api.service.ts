@@ -61,7 +61,6 @@ export class ApiService {
     private handleError(error: Response | any) {
         if (error instanceof Response) {
             const body = error.json() || '';
-            // TODO: use to be body.error but that no longer is working?
             const err = body || JSON.stringify(body);
             this.errorMessage = `${error.status} - ${error.statusText || ''} ${err}`;
         } else {

@@ -14,7 +14,7 @@ export class AppComponent {
 
   @ViewChild('snav', { static: true }) snav: MatSidenav;
 
-  public isLoading: boolean = false;
+  public isLoading = false;
   public skateparks: Skatepark[];
   public states: States;
   public errorMessage: string;
@@ -24,7 +24,7 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
-    this.loadStates()
+    this.loadStates();
    }
 
    public loadSkateparks() {
