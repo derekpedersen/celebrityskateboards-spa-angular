@@ -1,5 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Skatepark } from './skatepark/skatepark.model';
+import { SkateparkService } from './skatepark/skatepark.service';
+import { States } from './states/state.model';
 
 @Component({
   selector: 'celebrityskateboards',
@@ -10,4 +13,42 @@ export class AppComponent {
   title = 'app';
 
   @ViewChild('snav', { static: true }) snav: MatSidenav;
+
+  public isLoading: boolean = false;
+  public skateparks: Skatepark[];
+  public states: States;
+  public errorMessage: string;
+
+  constructor(
+    private service: SkateparkService
+  ) { }
+
+  ngOnInit() {
+    // this.loadSkateparks()
+    this.loadStates()
+   }
+
+   public loadSkateparks() {
+     this.isLoading = true;
+     this.service.getSkateparks()
+       .subscribe(result => {
+         this.skateparks = result;
+         this.isLoading = false;
+       }, error => {
+         this.errorMessage = <any>error;
+         this.isLoading = false;
+       });
+   }
+
+   public loadStates() {
+     this.isLoading = true;
+     this.service.getSkateparkStates()
+       .subscribe(result => {
+         this.states = result;
+         this.isLoading = false;
+       }, error => {
+         this.errorMessage = <any>error;
+         this.isLoading = false;
+       });
+   }
 }
