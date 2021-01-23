@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -28,15 +28,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     HttpClientModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
-    MatButtonModule, 
-    MatCardModule, 
-    MatIconModule, 
-    MatExpansionModule, 
-    MatMenuModule, 
-    MatToolbarModule, 
-    MatProgressSpinnerModule, 
-    MatListModule, 
-    MatSidenavModule, 
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule,
+    MatListModule,
+    MatSidenavModule,
     MatProgressBarModule
   ],
   providers: [
@@ -51,15 +51,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     HttpClientModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
-    MatButtonModule, 
-    MatCardModule, 
-    MatIconModule, 
-    MatExpansionModule, 
-    MatMenuModule, 
-    MatToolbarModule, 
-    MatProgressSpinnerModule, 
-    MatListModule, 
-    MatSidenavModule, 
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule,
+    MatListModule,
+    MatSidenavModule,
     MatProgressBarModule
   ]
 })

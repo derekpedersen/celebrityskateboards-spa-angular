@@ -35,7 +35,7 @@ export class SkateparkComponent {
         });
     }
 
-    public loadSkatepark(state, city, skatepark: string) {
+    public loadSkatepark(state: any, city: any, skatepark: string) {
         this.isLoading = true;
 
         // TODO: this should make a call to get the cities for a specific state

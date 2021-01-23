@@ -24,7 +24,6 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
-    // this.loadSkateparks()
     this.loadStates()
    }
 

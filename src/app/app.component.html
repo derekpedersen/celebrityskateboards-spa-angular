@@ -1,4 +1,3 @@
-<!-- <div *ngIf="!isLoading"> -->
 <mat-toolbar color="primary">
     <button mat-icon-button (click)="snav.open()">
         <mat-icon>menu</mat-icon>
@@ -12,10 +11,9 @@
         </mat-accordion>
     </mat-sidenav>
     <mat-sidenav-content>
-        <router-outlet fxFlexFill></router-outlet>
+        <router-outlet fxFlexFill *ngIf="!isLoading"></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
-<!-- </div> -->
 
 <div class="overlay" *ngIf="isLoading">
     <div class="center">

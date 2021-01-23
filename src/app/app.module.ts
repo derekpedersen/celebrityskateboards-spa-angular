@@ -21,8 +21,8 @@ import { SkateparkModule } from './skatepark/skatepark.module';
     StatesModule,
     AppRoutingModule
   ],
-  providers: [
-  ],
+  exports: [],
+  providers: [],
   bootstrap: [
     AppComponent
   ]

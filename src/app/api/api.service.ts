@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+// tslint:disable-next-line: import-blacklist
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import { Jsonp } from '@angular/http/src/http';
 
 @Injectable()
 export class ApiService {
@@ -24,7 +24,7 @@ export class ApiService {
 
     get(resourceUrl: string): Observable<any> {
         this.setHeaders();
-        let url = this._baseUrl + resourceUrl;
+        const url = this._baseUrl + resourceUrl;
         return this._http
             .get(url, { headers: this._headers })
             .catch(this.handleError);
@@ -32,7 +32,7 @@ export class ApiService {
 
     delete(resourceUrl: string): Observable<any> {
         this.setHeaders();
-        let url = this._baseUrl + resourceUrl;
+        const url = this._baseUrl + resourceUrl;
         return this._http
             .delete(url, { headers: this._headers })
             .catch(this.handleError);
@@ -40,7 +40,7 @@ export class ApiService {
 
     post(resource: any, resourceUrl: string): Observable<any> {
         this.setHeaders();
-        let url = this._baseUrl + resourceUrl;
+        const url = this._baseUrl + resourceUrl;
         return this._http
             .post(url, JSON.stringify(resource), { headers: this._headers })
             .catch(this.handleError);
@@ -48,7 +48,7 @@ export class ApiService {
 
     put(resource: any, resourceUrl: string): Observable<any> {
         this.setHeaders();
-        let url = this._baseUrl + resourceUrl;
+        const url = this._baseUrl + resourceUrl;
         return this._http
             .put(url, JSON.stringify(resource), { headers: this._headers })
             .catch(this.handleError);
@@ -69,6 +69,7 @@ export class ApiService {
         }
         console.error(this.errorMessage);
 
+        // tslint:disable-next-line: deprecation
         return Observable.throw(this.errorMessage);
     }
 }

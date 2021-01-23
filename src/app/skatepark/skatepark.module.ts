@@ -21,6 +21,7 @@ import { SkateparkRoutingModule } from './skatepark.routing';
   ],
   providers: [
       SkateparkService
-  ]
+  ],
+  bootstrap: []
 })
 export class SkateparkModule { }

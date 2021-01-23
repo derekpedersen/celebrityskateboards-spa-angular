@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Operator } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Skatepark } from './skatepark.model';
 
@@ -13,7 +13,7 @@ import { Cities } from '../cities/city.model';
 export class SkateparkService {
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
-    private skateparkUrl = 'skateparks';  // URL to web api
+    private skateparkUrl = 'skateparks';
 
     public states: Observable<States>;
     public cities: Cities;
@@ -24,30 +24,30 @@ export class SkateparkService {
     constructor(
         private apiService: ApiService
     ) {
-        this.states = this.getSkateparkStates().share()
+        this.states = this.getSkateparkStates().share();
     }
 
     getSkateparks(): Observable<Skatepark[]> {
-        var resourceUrl = this.skateparkUrl;
+        const resourceUrl = this.skateparkUrl;
 
         return this.apiService.get(resourceUrl);
     }
 
     getSkateparkStates(): Observable<States> {
-        var resourceUrl = this.skateparkUrl + '';
+        const resourceUrl = this.skateparkUrl + '';
 
         return this.apiService.get(resourceUrl);
     }
 
     getSkateparkCities(state: string): Observable<Cities> {
-        var resourceUrl = this.skateparkUrl + '/' + state;
+        const resourceUrl = this.skateparkUrl + '/' + state;
 
         return this.apiService.get(resourceUrl);
     }
 
     // TODO: implement this yo!
-    getSkateparkByName(state, city, name: string) {
-        var resourceUrl = this.skateparkUrl + '/' + state + "/" + city + "/" + name;
+    getSkateparkByName(state: string, city: string, name: string) {
+        const resourceUrl = this.skateparkUrl + '/' + state + '/' + city + '/' + name;
 
         return this.apiService.get(resourceUrl);
     }

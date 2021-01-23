@@ -1,4 +1,4 @@
-import { ImgurImage } from "./imgur-image.model";
+import { ImgurImage } from './imgur-image.model';
 
 export class ImgurAlbum {
     id: string;
