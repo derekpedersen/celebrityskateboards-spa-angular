@@ -5,6 +5,7 @@ import { SkateparkService } from './skatepark/skatepark.service';
 import { States } from './states/state.model';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'celebrityskateboards',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -25,18 +26,6 @@ export class AppComponent {
 
   ngOnInit() {
     this.loadStates();
-   }
-
-   public loadSkateparks() {
-     this.isLoading = true;
-     this.service.getSkateparks()
-       .subscribe(result => {
-         this.skateparks = result;
-         this.isLoading = false;
-       }, error => {
-         this.errorMessage = <any>error;
-         this.isLoading = false;
-       });
    }
 
    public loadStates() {

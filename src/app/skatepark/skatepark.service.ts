@@ -14,10 +14,12 @@ export class SkateparkService {
 
     private skateparkUrl = 'skateparks';
 
-    public cities: Cities;
     public skateparks: Skatepark[];
+    public cities: Cities;
+    public states: States;
     public skatepark: Skatepark;
-    public loading: boolean;
+    public isLoading: boolean;
+    public errorMessage: string;
 
     constructor(
         private apiService: ApiService

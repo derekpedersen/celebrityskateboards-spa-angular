@@ -35,8 +35,6 @@ export class CitiesComponent implements OnInit {
 
   public loadCities(state: string) {
     this.isLoading = true;
-    // TODO: this should make a call to get the cities for a specific state
-    //       it will require an update to the skatepark-api for states/:state to return only the cities
     this.service.getSkateparkCities(state)
       .subscribe(result => {
         this.cities = result;

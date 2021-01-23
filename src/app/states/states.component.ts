@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { SkateparkService } from '../skatepark/skatepark.service';
 import { States } from './state.model';
 
 @Component({
@@ -13,11 +15,39 @@ export class StatesComponent implements OnInit {
 
   public isSelected = false;
   public state: String;
+  public isLoading: boolean;
   public errorMessage: string;
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private service: SkateparkService
+  ) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe(routeParams => {
+      if (routeParams.state !== undefined
+        && routeParams.state !== null
+        && (this.states === undefined || this.states === null)) {
+        this.loadState(routeParams.state);
+        this.state = routeParams.state;
+      }
+    });
+  }
+
+  public loadState(state: string) {
+    this.isLoading = true;
+    this.service.getSkateparkCities(state)
+      .subscribe(result => {
+        this.states = new Map();
+        this.states.set(state, result);
+        this.isLoading = false;
+      }, error => {
+        this.errorMessage = <any>error;
+        this.isLoading = false;
+      });
+  }
+
 
   public open(state: string): boolean {
     if ((this.state !== undefined && state !== undefined) && (this.state.toLowerCase() === state.toLowerCase())) {
