@@ -48,7 +48,6 @@ export class StatesComponent implements OnInit {
       });
   }
 
-
   public open(state: string): boolean {
     if ((this.state !== undefined && state !== undefined) && (this.state.toLowerCase() === state.toLowerCase())) {
       return true;
