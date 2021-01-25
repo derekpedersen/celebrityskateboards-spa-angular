@@ -48,4 +48,11 @@ export class CitiesComponent implements OnInit {
         this.isLoading = false;
       });
   }
+
+  public open(city: string): boolean {
+    if ((this.city !== undefined && city !== undefined) && (this.city.toLowerCase() === city.toLowerCase())) {
+      return true;
+    }
+    return false;
+  }
 }
