@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { SkateparkService } from '../skatepark/skatepark.service';
 import { States } from './state.model';
 
@@ -37,7 +37,7 @@ export class StatesComponent implements OnInit {
 
   public loadState(state: string) {
     this.isLoading = true;
-    this.service.getSkateparkCities(state)
+    this.service.getSkateparksGroupedByCityWithinState(state)
       .subscribe(result => {
         this.states = new Map();
         this.states.set(state, result);

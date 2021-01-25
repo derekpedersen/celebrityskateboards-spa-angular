@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Cities } from './city.model';
 import { SkateparkService } from '../skatepark/skatepark.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -12,32 +13,35 @@ export class CitiesComponent implements OnInit {
 
   @Input() cities: Cities;
   @Input() state: string;
+  @Input() subnav = false;
+
   public city: string;
   public isLoading: boolean;
   public errorMessage: string;
 
   constructor(
-    // private route: ActivatedRoute,
+    private route: ActivatedRoute,
     private service: SkateparkService
   ) { }
 
   ngOnInit() {
-    if (this.state === undefined || this.state === null || (this.state.length === 0)) {
-      // this.state = this.route.snapshot.params.state;
-    }
-    console.log(this.state);
-    // this.city = this.route.snapshot.params.city;
-    console.log(this.city);
-    if (this.cities === undefined || this.cities === null || this.cities.size === 0) {
-      this.loadCities(this.state);
-    }
+    this.route.params.subscribe(routeParams => {
+      if (routeParams.state !== undefined
+        && routeParams.state !== null
+        && (this.cities === undefined || this.cities === null)) {
+        this.loadCity(routeParams.state, routeParams.city);
+        this.state = routeParams.state;
+        this.city = routeParams.city;
+      }
+    });
   }
 
-  public loadCities(state: string) {
+  public loadCity(state: string, city: string) {
     this.isLoading = true;
-    this.service.getSkateparkCities(state)
+    this.service.getSkateparksByStateAndCity(state, city)
       .subscribe(result => {
-        this.cities = result;
+        this.cities = new Map();
+        this.cities.set(city, result);
         this.isLoading = false;
       }, error => {
         this.errorMessage = <any>error;

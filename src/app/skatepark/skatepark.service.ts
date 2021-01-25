@@ -31,14 +31,20 @@ export class SkateparkService {
         return this.apiService.get(resourceUrl);
     }
 
-    getSkateparkStates(): Observable<States> {
+    getSkateparksGroupedByState(): Observable<States> {
         const resourceUrl = this.skateparkUrl + '';
 
         return this.apiService.get(resourceUrl);
     }
 
-    getSkateparkCities(state: string): Observable<Cities> {
+    getSkateparksGroupedByCityWithinState(state: string): Observable<Cities> {
         const resourceUrl = this.skateparkUrl + '/' + state;
+
+        return this.apiService.get(resourceUrl);
+    }
+
+    getSkateparksByStateAndCity(state: string, city: string): Observable<Skatepark[]> {
+        const resourceUrl = this.skateparkUrl + '/' + state + '/' + city;
 
         return this.apiService.get(resourceUrl);
     }

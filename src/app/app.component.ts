@@ -30,7 +30,7 @@ export class AppComponent {
 
    public loadStates() {
      this.isLoading = true;
-     this.service.getSkateparkStates()
+     this.service.getSkateparksGroupedByState()
        .subscribe(result => {
          this.states = result;
          this.isLoading = false;
