@@ -14,6 +14,8 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     CitiesRoutingModule
   ],
+  providers: [],
+  bootstrap: [],
   exports: [
     CitiesComponent
   ]

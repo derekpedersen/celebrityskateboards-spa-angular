@@ -18,6 +18,8 @@ import { CitiesModule } from '../cities/cities.module';
   ],
   exports: [
     StatesComponent
-  ]
+  ],
+  providers: [],
+  bootstrap: []
 })
 export class StatesModule { }

@@ -7,10 +7,17 @@
 <mat-sidenav-container fxFlexFill fxLayout="column" (backdropClick)="snav.close()">
     <mat-sidenav #snav>
         <mat-accordion>
-            <states></states>
+            <states [states]="states"></states>
         </mat-accordion>
     </mat-sidenav>
     <mat-sidenav-content>
-        <router-outlet fxFlexFill></router-outlet>
+        <router-outlet fxFlexFill *ngIf="!isLoading"></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+<div class="overlay" *ngIf="isLoading">
+    <div class="center">
+        <mat-progress-spinner diameter=200 mode="indeterminate">
+        </mat-progress-spinner>
+    </div>
+</div>

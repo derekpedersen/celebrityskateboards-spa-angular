@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { SkateparkComponent } from './skatepark.component';
 
 const routes: Routes = [
-    //{ path: 'skateparks/:state/:city', component: SkateparkComponent },
-    { path: 'skateparks/:state/:city/:skatepark', component: SkateparkComponent },
-]
+  // TODO: need a list view of skateparks by name
+  // { path: 'skateparks/:state/:city', component: SkateparkComponent },
+  { path: 'skateparks/:state/:city/:skatepark', component: SkateparkComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

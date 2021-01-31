@@ -1,38 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-//import { ActivatedRoute } from '@angular/router';
-import { States } from './state.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { SkateparkService } from '../skatepark/skatepark.service';
-import { Cities } from '../cities/city.model';
+import { States } from './state.model';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'states',
   templateUrl: './states.component.html',
   styleUrls: ['./states.component.scss']
 })
 export class StatesComponent implements OnInit {
 
-  public isLoading: boolean = true;
-  public isSelected: boolean = false;
-  public states: States;
+  @Input() states: States;
+
+  public isSelected = false;
   public state: String;
+  public isLoading: boolean;
   public errorMessage: string;
 
   constructor(
-    //private route: ActivatedRoute,
+    private route: ActivatedRoute,
     private service: SkateparkService
-  ) { }
-
-  ngOnInit() {
-    //this.state = this.route.snapshot.params.state;
-    //console.log(this.route.snapshot.params.state);
-    this.loadstates();
+  ) {
   }
 
-  public loadstates() {
+  ngOnInit() {
+    this.route.params.subscribe(routeParams => {
+      if (routeParams.state !== undefined
+        && routeParams.state !== null
+        && (this.states === undefined || this.states === null)) {
+        this.loadState(routeParams.state);
+        this.state = routeParams.state;
+      }
+    });
+  }
+
+  public loadState(state: string) {
     this.isLoading = true;
-    this.service.getSkateparkStates()
+    this.service.getSkateparksGroupedByCityWithinState(state)
       .subscribe(result => {
-        this.states = result;
+        this.states = new Map();
+        this.states.set(state, result);
         this.isLoading = false;
       }, error => {
         this.errorMessage = <any>error;
@@ -41,7 +49,6 @@ export class StatesComponent implements OnInit {
   }
 
   public open(state: string): boolean {
-    // TODO: clean this up
     if ((this.state !== undefined && state !== undefined) && (this.state.toLowerCase() === state.toLowerCase())) {
       return true;
     }
