@@ -5,11 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line: component-selector
-  selector: 'cities',
-  templateUrl: './cities.component.html',
-  styleUrls: ['./cities.component.scss']
+  selector: 'cities-sidenav',
+  templateUrl: './cities-sidenav.component.html',
+  styleUrls: ['./cities-sidenav.component.scss']
 })
-export class CitiesComponent implements OnInit {
+export class CitiesSidenavComponent implements OnInit {
 
   @Input() cities: Cities;
   @Input() state: string;

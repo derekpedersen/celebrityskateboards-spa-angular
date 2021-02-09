@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SkateparkService } from '../skatepark/skatepark.service';
+import { SkateparkService } from '../skateparks/skatepark.service';
 import { States } from './state.model';
 
 @Component({
