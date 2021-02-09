@@ -13,9 +13,9 @@ import { Skatepark } from '../skateparks/skatepark.model';
 export class CityComponent implements OnInit {
 
     @Input() city: string;
+    @Input() state: string;
     @Input() skateparks: Skatepark[];
 
-    public state: string;
     public isLoading: boolean;
     public errorMessage: string;
 
@@ -26,12 +26,14 @@ export class CityComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.subscribe(routeParams => {
-            if (!(routeParams.state === undefined || routeParams.state === null)
-                && !(routeParams.city === undefined || routeParams.city === null)
-                && !(this.skateparks === null || this.skateparks === undefined)) {
-                this.loadCity(routeParams.state, routeParams.city);
+            if (routeParams.state !== undefined && routeParams.state !== null) {
                 this.state = routeParams.state;
+            }
+            if (routeParams.city !== undefined && routeParams.city !== null) {
                 this.city = routeParams.city;
+            }
+            if (this.city === undefined || this.city === null) {
+                this.loadCity(this.state, this.city);
             }
         });
     }
