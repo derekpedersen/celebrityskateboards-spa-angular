@@ -26,12 +26,14 @@ export class CitiesComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(routeParams => {
-      if (routeParams.state !== undefined
-        && routeParams.state !== null
-        && (this.cities === undefined || this.cities === null)) {
-        this.loadCity(routeParams.state, routeParams.city);
+      if (routeParams.state !== undefined && routeParams.state !== null) {
         this.state = routeParams.state;
+      }
+      if (routeParams.city !== undefined && routeParams.city !== null) {
         this.city = routeParams.city;
+      }
+      if (this.cities === undefined || this.cities === null) {
+        this.loadCity(this.state, this.city);
       }
     });
   }

@@ -26,22 +26,24 @@ export class CitiesSidenavComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(routeParams => {
-      if (routeParams.state !== undefined
-        && routeParams.state !== null
-        && (this.cities === undefined || this.cities === null)) {
-        this.loadCity(routeParams.state, routeParams.city);
+      if (routeParams.state !== undefined && routeParams.state !== null) {
         this.state = routeParams.state;
+      }
+      if (routeParams.city !== undefined && routeParams.city !== null) {
         this.city = routeParams.city;
+      }
+      if (this.cities === undefined || this.cities === null) {
+        this.loadCities(this.state, this.city);
       }
     });
   }
 
-  public loadCity(state: string, city: string) {
+  public loadCities(state: string, city: string) {
     this.isLoading = true;
-    this.service.getSkateparksByStateAndCity(state, city)
+    this.service.getSkateparksGroupedByCityWithinState(state)
       .subscribe(result => {
         this.cities = new Map();
-        this.cities.set(city, result);
+        this.cities = result;
         this.isLoading = false;
       }, error => {
         this.errorMessage = <any>error;
