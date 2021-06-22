@@ -13,6 +13,13 @@ pipeline {
                 }
             }
         }
+        stage('Dependencies') {
+            steps{
+                dir('/root/workspace/celebrityskateboards-spa-angular') {
+                    sh 'npm install'
+                }
+            }
+        }
         stage('Build') {
             steps{
                 dir('/root/workspace/celebrityskateboards-spa-angular') {
@@ -42,6 +49,7 @@ pipeline {
             steps {
                 withCredentials([[$class: 'StringBinding', credentialsId: 'GCLOUD_PROJECT_ID', variable: 'GCLOUD_PROJECT_ID']]) {
                     dir('/root/workspace/celebrityskateboards-spa-angular') {
+                        sh 'npm run docker:tag'
                         sh 'npm run docker:publish'
                     }
                 }
@@ -53,6 +61,7 @@ pipeline {
             }
             steps {
                 dir('/root/workspace/celebrityskateboards-spa-angular') {
+                    sh 'npm run set-version'
                     sh 'npm run deploy'
                 }
             }
