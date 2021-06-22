@@ -4,11 +4,14 @@
   "homepage": ".",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.config.json",
-    "build": "ng build",
-    "test": "ng test",
+    "start": "ng serve --host 0.0.0.0 --disable-host-check --proxy-config ./proxy.config.json",
+    "build": "rm -rf dist && ng build --prod --build-optimizer --aot",
+    "test": "ng test --watch=false --browsers ChromeHeadless --code-coverage",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "docker:build": "docker build ./ -t celebrityskateboards-spa-angular --no-cache",
+    "docker:publish": "export GIT_COMMIT_SHA = $(shell git rev-parse HEAD) && docker tag celebrityskateboards-spa-angular us.gcr.io/${GCLOUD_PROJECT_ID}/celebrityskateboards-spa-angular:${GIT_COMMIT_SHA} $$ gcloud docker -- push us.gcr.io/${GCLOUD_PROJECT_ID}/celebrityskateboards-spa-angular:${GIT_COMMIT_SHA}",
+    "deploy": "./.helm/set-version.sh && helm upgrade celebrityskateboards .helm"
   },
   "private": true,
   "dependencies": {
