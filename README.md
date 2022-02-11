@@ -1,7 +1,7 @@
 # CelebritySkateboards.com
 
-[![Build Status](https://jenkins.derekpedersen.com/buildStatus/icon?job=derekpedersen/celebrityskateboards-spa-angular/master&style=plastic&.png)](https://jenkins.derekpedersen.com/job/derekpedersen/job/celebrityskateboards-spa-angular/job/master/)
-[![Coverage Status](https://coveralls.io/repos/github/derekpedersen/celebrityskateboards-spa-angular/badge.png?branch=master)](https://coveralls.io/github/derekpedersen/celebrityskateboards-spa-angular)
+[![Build Status](https://jenkins.derekpedersen.com/buildStatus/icon?job=derekpedersen/celebrityskateboards-spa-angular/main&style=plastic&.png)](https://jenkins.derekpedersen.com/job/derekpedersen/job/celebrityskateboards-spa-angular/job/main/)
+[![Coverage Status](https://coveralls.io/repos/github/derekpedersen/celebrityskateboards-spa-angular/badge.png?branch=main)](https://coveralls.io/github/derekpedersen/celebrityskateboards-spa-angular)
 
 [CelebritySkateboards.com](https://celebrityskateboards.com) is a Single Page Application (SPA) written in [Angular](https://angular.io).
 
@@ -41,7 +41,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ### Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/main/README.md).
 
 ## Makefile
 
