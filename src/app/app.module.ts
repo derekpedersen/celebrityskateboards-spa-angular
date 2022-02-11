@@ -7,7 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { StatesModule } from './states/states.module';
 import { CitiesModule } from './cities/cities.module';
 import { HomepageComponent } from './homepage/homepage.component';
-import { SkateparkModule } from './skatepark/skatepark.module';
+import { SkateparkModule } from './skateparks/skatepark.module';
 
 @NgModule({
   declarations: [

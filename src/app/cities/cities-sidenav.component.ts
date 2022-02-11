@@ -5,11 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line: component-selector
-  selector: 'cities',
-  templateUrl: './cities.component.html',
-  styleUrls: ['./cities.component.scss']
+  selector: 'cities-sidenav',
+  templateUrl: './cities-sidenav.component.html',
+  styleUrls: ['./cities-sidenav.component.scss']
 })
-export class CitiesComponent implements OnInit {
+export class CitiesSidenavComponent implements OnInit {
 
   @Input() cities: Cities;
   @Input() state: string;
@@ -33,17 +33,17 @@ export class CitiesComponent implements OnInit {
         this.city = routeParams.city;
       }
       if (this.cities === undefined || this.cities === null) {
-        this.loadCity(this.state, this.city);
+        this.loadCities(this.state, this.city);
       }
     });
   }
 
-  public loadCity(state: string, city: string) {
+  public loadCities(state: string, city: string) {
     this.isLoading = true;
-    this.service.getSkateparksByStateAndCity(state, city)
+    this.service.getSkateparksGroupedByCityWithinState(state)
       .subscribe(result => {
         this.cities = new Map();
-        this.cities.set(city, result);
+        this.cities = result;
         this.isLoading = false;
       }, error => {
         this.errorMessage = <any>error;

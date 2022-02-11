@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ApiService } from '../api/api.service';
-import { SkateparkService } from '../skatepark/skatepark.service';
+import { SkateparkService } from '../skateparks/skatepark.service';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';

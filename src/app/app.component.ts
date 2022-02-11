@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Skatepark } from './skatepark/skatepark.model';
-import { SkateparkService } from './skatepark/skatepark.service';
+import { Skatepark } from './skateparks/skatepark.model';
+import { SkateparkService } from './skateparks/skatepark.service';
 import { States } from './states/state.model';
 
 @Component({
