@@ -32,7 +32,7 @@
     "@angular/router": "^8.2.6",
     "core-js": "^3.21.1",
     "node-sass": "^4.13.1",
-    "rxjs": "^6.5.3",
+    "rxjs": "^6.6.7",
     "rxjs-compat": "^6.5.3",
     "zone.js": "^0.10.2"
   },
