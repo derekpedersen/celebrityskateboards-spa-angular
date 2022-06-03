@@ -54,7 +54,7 @@
     "karma-coveralls": "^2.1.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
-    "npm": "^6.11.3",
+    "npm": "^8.12.1",
     "protractor": "^5.4.2",
     "ts-node": "~8.3.0",
     "tslint": "~5.20.0",
