@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --disable-host-check --proxy-config ./proxy.config.json",
-    "build": "rm -rf dist && ng build --prod --build-optimizer --aot",
+    "build": "rm -rf dist && ng build --configuration production --build-optimizer --aot",
     "test": "ng test --watch=false --browsers ChromeHeadless --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",

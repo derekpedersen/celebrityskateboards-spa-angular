@@ -7,8 +7,6 @@
 
 ## Angular CLI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
-
 ```bash
 npm install -g @angular/cli
 ```
@@ -42,39 +40,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/main/README.md).
-
-## Makefile
-
-The `Makefile` contains the following targets for building, running, and deploying the application. 
-
-### run 
-
-`make run`: calls ng serve
-
-### build
-
-`make build`: npm install && ng build
-
-### test
-
-`make test`: ng test
-
-### coveralls
-
-`make coveralls`: publishes code coverage results to coveralls.io
-
-### docker
-
-`make docker`: builds a docker image of the spa
-
-### publish
-
-`make publish`: publishes the docker image to the container registry (gcr)
-
-### deploy
-
-`make deploy`: deploys the application to a k8s cluster
-
-### kubernetes
-
-`make kubernetes`: calls `build`, `docker`, `publish`, and `deploy`
