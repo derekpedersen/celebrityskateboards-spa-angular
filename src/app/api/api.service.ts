@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable()
 export class ApiService {
@@ -26,7 +24,7 @@ export class ApiService {
         const url = this._baseUrl + resourceUrl;
         return this._http
             .get(url, { headers: this._headers })
-            .catch(this.handleError);
+            .pipe(catchError(this.handleError))
     }
 
     delete(resourceUrl: string): Observable<any> {
@@ -34,7 +32,7 @@ export class ApiService {
         const url = this._baseUrl + resourceUrl;
         return this._http
             .delete(url, { headers: this._headers })
-            .catch(this.handleError);
+            .pipe(catchError(this.handleError))
     }
 
     post(resource: any, resourceUrl: string): Observable<any> {
@@ -42,7 +40,7 @@ export class ApiService {
         const url = this._baseUrl + resourceUrl;
         return this._http
             .post(url, JSON.stringify(resource), { headers: this._headers })
-            .catch(this.handleError);
+            .pipe(catchError(this.handleError))
     }
 
     put(resource: any, resourceUrl: string): Observable<any> {
@@ -50,7 +48,7 @@ export class ApiService {
         const url = this._baseUrl + resourceUrl;
         return this._http
             .put(url, JSON.stringify(resource), { headers: this._headers })
-            .catch(this.handleError);
+            .pipe(catchError(this.handleError))
     }
 
     private setHeaders() {
@@ -68,6 +66,6 @@ export class ApiService {
         console.error(this.errorMessage);
 
         // tslint:disable-next-line: deprecation
-        return Observable.throw(this.errorMessage);
+        return throwError(() => new error(this.errorMessage));
     }
 }

@@ -40,3 +40,5 @@ Thumbs.db
 
 # Makefile artifacts
 deployment.sed*
+
+.angular/cache
