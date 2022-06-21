@@ -4,7 +4,7 @@ import { SkateparkService } from '../skateparks/skatepark.service';
 import { States } from './state.model';
 
 @Component({
-  // tslint:disable-next-line: component-selector
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'states',
   templateUrl: './states.component.html',
   styleUrls: ['./states.component.scss']

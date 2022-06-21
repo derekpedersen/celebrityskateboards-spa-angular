@@ -15,10 +15,6 @@ export class ApiService {
 
     }
 
-    ngOnInit() {
-
-    }
-
     get(resourceUrl: string): Observable<any> {
         this.setHeaders();
         const url = this._baseUrl + resourceUrl;

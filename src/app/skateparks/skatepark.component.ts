@@ -1,4 +1,4 @@
-import { Component, Pipe, Input, PipeTransform } from '@angular/core';
+import { Component, Pipe, Input, PipeTransform, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { Skatepark } from './skatepark.model';
@@ -6,18 +6,19 @@ import { ActivatedRoute } from '@angular/router';
 import { SkateparkService } from './skatepark.service';
 
 @Component({
-  // tslint:disable-next-line: component-selector
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'skatepark',
   templateUrl: './skatepark.component.html',
   styleUrls: ['./skatepark.style.css']
 })
 
-export class SkateparkComponent {
+export class SkateparkComponent implements OnInit {
 
     public skatepark: Skatepark;
     public isLoading: boolean;
     public errorMessage: string;
 
+    // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
     ngOnInit() {
     }
 
