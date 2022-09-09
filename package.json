@@ -10,10 +10,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "docker:build": "docker build ./ -t celebrityskateboards-spa-angular --no-cache",
-    "docker:tag": "docker tag celebrityskateboards-spa-angular us.gcr.io/${GCLOUD_PROJECT_ID}/celebrityskateboards-spa-angular:$(git rev-parse HEAD)",
-    "docker:publish": "gcloud docker -- push us.gcr.io/${GCLOUD_PROJECT_ID}/celebrityskateboards-spa-angular:$(git rev-parse HEAD)",
+    "docker:tag": "docker tag celebrityskateboards-spa-angular us.gcr.io/sleipnir/celebrityskateboards-spa-angular:$(git rev-parse HEAD)",
+    "docker:publish": "gcloud docker -- push us.gcr.io/sleipnir/celebrityskateboards-spa-angular:$(git rev-parse HEAD)",
     "set-version": "sed -i -e 's/^version:.*$/version: '$(date '+%Y.%m%d.%H%M')'/' -e 's/^appVersion:.*$/appVersion: '$(git rev-parse HEAD)'/' .helm/Chart.yaml",
-    "deploy": "helm upgrade celebrityskateboards .helm"
+    "deploy": "helm install celebrityskateboards .helm"
   },
   "private": true,
   "dependencies": {
