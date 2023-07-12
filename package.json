@@ -13,7 +13,7 @@
     "docker:tag": "docker tag celebrityskateboards-spa-angular us.gcr.io/sleipnir/celebrityskateboards-spa-angular:$(git rev-parse HEAD)",
     "docker:publish": "gcloud docker -- push us.gcr.io/sleipnir/celebrityskateboards-spa-angular:$(git rev-parse HEAD)",
     "set-version": "sed -i -e 's/^version:.*$/version: '$(date '+%Y.%m%d.%H%M')'/' -e 's/^appVersion:.*$/appVersion: '$(git rev-parse HEAD)'/' .helm/Chart.yaml",
-    "deploy": "helm install celebrityskateboards .helm"
+    "deploy": "helm upgrade --install celebrityskateboards .helm"
   },
   "private": true,
   "dependencies": {

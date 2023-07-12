@@ -1,8 +1,8 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button (click)="snav.open()">
+<mat-toolbar class="toolbar">
+    <button mat-icon-button (click)="snav.open()" class="navbutton">
         <mat-icon>menu</mat-icon>
     </button>
-    <span routerLink='/'>Celebrity Skateboards</span>
+    <span routerLink='/' class="title">Celebrity Skateboards</span>
 </mat-toolbar>
 <mat-sidenav-container fxFlexFill fxLayout="column" (backdropClick)="snav.close()">
     <mat-sidenav #snav>

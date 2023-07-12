@@ -8,7 +8,7 @@ import { States } from './states/state.model';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'celebrityskateboards',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'app';
